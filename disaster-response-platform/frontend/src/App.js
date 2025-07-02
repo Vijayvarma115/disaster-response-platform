@@ -17,6 +17,9 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api
 function App() {
   const [socket, setSocket] = useState(null);
   const [currentUser, setCurrentUser] = useState('netrunnerX'); // Mock user
+    useEffect(() => {
+  axios.defaults.headers.common['x-user-id'] = currentUser;
+}, [currentUser]);
   const [selectedDisaster, setSelectedDisaster] = useState(null);
   const [disasters, setDisasters] = useState([]);
   const [activeTab, setActiveTab] = useState('disasters');
